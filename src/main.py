@@ -31,13 +31,21 @@ def sitemap():
     return generate_sitemap(app)
 
 @app.route('/user', methods=['GET'])
-def handle_hello():
+def get_users():
 
-    response_body = {
-        "msg": "Hello, this is your GET /user response "
-    }
+    result = User.query.all()
+    # map the results and your list of users  inside of the all_users variable
+    all_users = list(map(lambda x: x.serialize(), result))
 
-    return jsonify(response_body), 200
+
+    return jsonify(all_users), 200
+
+
+
+
+
+
+
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
