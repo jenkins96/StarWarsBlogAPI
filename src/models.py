@@ -29,8 +29,8 @@ class User(db.Model):
             "last_name": self.last_name,
             "username": self.username,
             "email": self.email,
-            "like_character": list(map(lambda y: y.serializeForUser(), self.charactersFavorites)),
-            "like_planet": list(map(lambda y: y.serializeForUser(), self.planetsfavorites)),
+            "like_character": list(map(lambda y: y.serializeForUser(), self.like_character)),
+            "like_planet": list(map(lambda y: y.serializeForUser(), self.like_planet)),
             # do not serialize the password, its a security breach
         }
     def serializeFavorites(self):
